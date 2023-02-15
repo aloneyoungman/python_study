@@ -1,24 +1,23 @@
-import numbers
 def repeat_while_accept():
     print('Введите первое число: ')
     while True:
-        a = input()
-        if a.isdigit():
+        b = input()
+        if b.isdigit():
             break
         else:
-            print('Вы ввели не число. Попробуйте ещё раз')
+            print('Вы ввели неверное букву. Попробуйте ещё раз')
 
-    print('Введите арифметическую операцию: "+","-","*","/" или "^"')
+    print('Введите букву q,w или e')
     while True:
         operator = input()
         if operator in ('+','-','*','/','^'):
             break
         else:
             print('Вы ввели неверное букву. Попробуйте ещё раз')
-    print('Введите второе число ')
+    print('Введите букву q,w или e')
     while True:
         b = input()
-        if float(b).is_integer():
+        if b.isdigit():
             break
         else:
             print('Вы ввели неверное букву. Попробуйте ещё раз')
@@ -37,3 +36,6 @@ try:
         print(round(float(list1[0])**float(list1[2]),5))
 except ZeroDivisionError:
     print("Попытка деления числа на ноль")
+
+
+
