@@ -1,8 +1,9 @@
-a1=[1,2,"a","2"]
-a2=(1,2,"a","2")
-a3="dsfer4"
 
 def GetOnlyEven(spisok: list)->list:
+    '''
+    :param spisok:
+    :return:
+    '''
     if type(spisok)==list:
         spisok_new=[]
         for i in range(len(spisok)):
@@ -11,36 +12,37 @@ def GetOnlyEven(spisok: list)->list:
         return spisok_new
     else:
         return "ArgumentError"
-print(GetOnlyEven(a1))
-print(GetOnlyEven(a2))
-print(GetOnlyEven(a3))
 
-
-b1="sdfkjhwei34"
-b2=(3,2,2)
-b3=["weqweq"]
 
 def OrderString(string: str)->str:
     if type(string)==str:
         return "".join(sorted(string))
     else:
         return "ArgumentError"
-print(OrderString(b1))
-print(OrderString(b2))
-print(OrderString(b3))
-
 
 
 class Animals:
-    def __init__(self,name):
+    def __init__(self,name: str,IP: str,color: str,
+                 weight: int, height: int):
         self.name=name
-        self.IsPredator=True
+        if IP=="yes":self.IsPredator=True
+        else: self.IsPredator=False
         self.__age=1
-        self.color="blue"
-        self.weight=10
-        self.height=10
+        self.color=color
+        self.weight=weight
+        self.height=height
 
     def set_age(self, age):
+        """
+        добавил метод set_age для того, чтобы можно было исключить ввод
+        некорректного возраста ( то есть отрицательного ). Артибут
+        self.__age является приватным и вызввать его можно только находясь
+        находясь в этом классе, поэтому использую фильтр set_age, который
+        при нужных нам условиях вызывает self.__age (Пардон за кривость
+        описания, буду учиться это делать понятным языком)
+        :param age:
+        :return:
+        """
         if 1 < age < 110:
             self.__age = age
         else:
@@ -68,11 +70,57 @@ def GetAnimalColor(Animal):
     else:
         return "ArgumentError"
 
-bear=Animals("BEAR")
-bear.set_age(-20)
+#создаем разного типа аргументы для проверки метода GetOnlyEven
+#который принимает список и возвращает список с четными позициями прнятого списка
+spisok1=[1,2,3,"3","2","ert"]
+spisok2={2:3,"r":3,6:"g"}
+spisok3="fwef34"
+spisok4=124
+
+#вызываем метод GetOnlyEven
+print(GetOnlyEven(spisok1))
+print(GetOnlyEven(spisok2))
+print(GetOnlyEven(spisok3))
+print(GetOnlyEven(spisok4))
+
+#то же самое делаем для метода OrderString,
+#который возвращает строку с отсортированными по алфавиту символами
+string1=[1,2,3,"3","2","ert"]
+string2={2:3,"r":3,6:"g"}
+string3="fwef34"
+string4=124
+
+print(OrderString(string1))
+print(OrderString(string2))
+print(OrderString(string3))
+print(OrderString(string4))
+
+
+#создаем объект класса Animals
+bear=Animals("BEAR","yes","blue",10,15)
+lion=Animals("LION","yes","orange",25,10)
+dog=Animals("CAT","no","blue",2,5)
+
 bear.set_age(20)
+lion.set_age(0)
+dog.set_age(200)
+
 print(bear.get_age())
+print(lion.get_age())
+print(dog.get_age())
+
 bear.Walk(20)
+lion.Walk(40)
+dog.Walk(1000)
+
 print(bear.GetIMT())
+print(lion.GetIMT())
+print(dog.GetIMT())
+
 bear.Voice()
+lion.Voice()
+dog.Voice()
+
+
 print(GetAnimalColor(bear))
+print(bear.IsPredator)
