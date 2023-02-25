@@ -22,9 +22,21 @@ def OrderString(string: str)->str:
 
 
 class Animals:
+# В целом всё верно, но значения типа bool(IsPredator) - стоит передавать не строкой
+# А именно предназначенным для этого значением (True\False)
+
     def __init__(self,name: str,IP: str,color: str,
                  weight: int, height: int):
         self.name=name
+
+# Конструкцию ниже - можно упростить:
+# У тебя идёт проверка "Если IP равно 'yes' тогда записать True, иначе записать False"
+# Это же можно записать по другому и чуть более правильно:
+# IsPredator равен условию IP == 'yes'
+# т.к. IP == yes возращает значение типа bool - можно его сразу и записать
+#
+# т.е. так:
+# self.IsPredator = (IP =='yes')
         if IP=="yes":self.IsPredator=True
         else: self.IsPredator=False
         self.__age=1
@@ -43,6 +55,8 @@ class Animals:
         :param age:
         :return:
         """
+# Всё отлично!
+# Грамотный ход мыслей
         if 1 < age < 110:
             self.__age = age
         else:
