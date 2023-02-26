@@ -12,6 +12,16 @@ class Cat(Animals):
     def Sleep(self,time: int):
         print(f"{self.name} лег спать на {time} минут")
 
+# Да, сделал не совсем так, как я имел ввиду
+# Лямбда функии - те же самые функции, но с другой записью
+# Я имел ввиду определить функцию Voice таким образом:
+    Voice1 = lambda self : print(f"{self.name} сказал мяу")
+# Т.е. это просто другая форма записи
+# эта запись аналогична тому, как ты написал ниже
+# т.е. после слова lamda - параметры функции (в данном случае self)
+# после двоеточия - вовзращаемое значение/действия функции
+
+
     def Voice(self,):
         voice=lambda:f"{self.name} сказал мяу"
         print(voice())
@@ -66,7 +76,7 @@ def other_test_f(l:list[Animals]):
 other_test_f(cats_and_dogs)
 
 for cat in cats:
-    cat.Voice()
+    cat.Voice1()
 
 for dog in dogs:
     dog.Voice()
