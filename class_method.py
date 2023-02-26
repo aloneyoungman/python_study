@@ -37,8 +37,7 @@ class Animals:
 #
 # т.е. так:
 # self.IsPredator = (IP =='yes')
-        if IP=="yes":self.IsPredator=True
-        else: self.IsPredator=False
+        self.IsPredator=(IP=="yes")
         self.__age=1
         self.color=color
         self.weight=weight
